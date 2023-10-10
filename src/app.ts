@@ -28,3 +28,26 @@ app.setErrorHandler((error, _, reply) => {
 
   return reply.status(500).send({ message: 'Internal server error.', error })
 })
+
+app.get('/', async () => {
+  return {
+    greeting: 'Image Processing API',
+    endpoints: [
+      {
+        method: 'POST',
+        url: '/process-images-from-url',
+        description: 'Process images from a URL',
+      },
+      {
+        method: 'POST',
+        url: '/process-images-from-upload',
+        description: 'Process images from a file upload',
+      },
+      {
+        method: 'POST',
+        url: '/apply-watermark',
+        description: 'Apply a watermark to an existing image',
+      },
+    ],
+  }
+})
